@@ -1,0 +1,54 @@
+FROM node:20-slim as dev
+
+ARG APPDIR
+
+RUN apt-get update && apt-get install -y procps
+
+ENV NODE_MODE=dev
+
+WORKDIR /app
+
+COPY ${APPDIR}/package*.json .
+
+RUN npm install -g typescript
+
+RUN npm ci
+
+COPY ${APPDIR} .
+
+EXPOSE 3001 34560
+
+CMD ["npm" ,"run", "start:debug"]
+
+FROM dev as build
+
+ENV NODE_MODE=build
+
+WORKDIR /shared
+
+COPY shared /shared
+
+RUN npm ci
+
+RUN npm run build
+
+WORKDIR /app
+
+RUN npm run build
+
+FROM node:20-slim as prod
+
+ENV NODE_MODE=prod
+
+WORKDIR /app
+
+COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/dist /app/dist
+
+COPY --from=build shared/package.json /shared/package.json
+COPY --from=build shared/dist /shared/dist
+COPY --from=build shared/node_modules /shared/node_modules
+
+CMD ["node","dist/main"]
+
+# HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD [ "wget", "-q0", "http://localhost:3000/health" ]

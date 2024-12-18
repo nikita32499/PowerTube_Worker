@@ -1,0 +1,56 @@
+services:
+
+    worker-postgres:
+      container_name: powertube_worker_postgres_dev
+      image: postgres:16.4-alpine
+      restart: always
+
+      env_file: .env.dev
+      volumes:
+          - /var/worker_postgres_data:/var/lib/postgresql/data
+      network_mode: host
+      attach: true
+
+    worker-nestjs:
+        container_name: powertube_worker_nestjs_dev
+        build: 
+            context: './backend/'
+            target: dev
+            args:
+              APPDIR: "."
+            
+        restart: always
+        env_file: .env.dev
+        depends_on:
+            worker-postgres:
+                condition: service_started
+        develop:
+          watch:
+            - path: ./backend/
+              action: sync
+              target: /app
+              ignore:
+                - node_modules
+                - dist
+                - .vscode
+        network_mode: host
+
+
+
+    worker-squid:
+        container_name: powertube_worker_squid_dev
+        build:
+          context: "./squid/"
+          args:
+            APPDIR: "."
+        restart: always
+        
+        volumes: 
+          - "./cert:/etc/squid/ssl_cert/:ro"
+        network_mode: host
+        attach: true
+        depends_on:
+          worker-nestjs:
+            condition: service_started
+
+    

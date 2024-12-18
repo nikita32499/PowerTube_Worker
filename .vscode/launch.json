@@ -1,0 +1,26 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		
+
+			{
+					"name": "Debug PostgreSQL Helper",
+					"type": "cppdbg",
+					"request": "launch",
+					"program": "${workspaceFolder}/squid/auth_pg_helper/auth_pg_helper",
+					"args": ["--host", "localhost", "--port", "5432", "--dbname", "mydb"],
+					"stopAtEntry": false,
+					"cwd": "${workspaceFolder}",
+					"environment": [],
+					"externalConsole": false,
+					"MIMode": "gdb",
+					"setupCommands": [
+							{
+									"description": "Enable pretty-printing for gdb",
+									"text": "-enable-pretty-printing",
+									"ignoreFailures": true
+							}
+					],
+			}
+	]
+}

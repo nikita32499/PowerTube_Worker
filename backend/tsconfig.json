@@ -1,0 +1,62 @@
+{
+    "compilerOptions": {
+        // Настройки компиляции
+        "target": "ES2022", // Более современная версия ECMAScript
+        "module": "commonjs",
+        "lib": ["ES2022"], // Убрал DOM, так как для бэкенда не нужен
+        "declaration": true, // Генерация .d.ts файлов
+        "removeComments": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "baseUrl": "./src",
+
+        // Настройки модулей
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true, // Добавлено для лучшей совместимости с импортами
+
+        // Строгие настройки типизации
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+
+        // Дополнительные проверки
+        "noUnusedLocals": false, // Включил для лучшего качества кода
+        "noUnusedParameters": false, // Включил для лучшего качества кода
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+
+        // Настройки для NestJS
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+
+        // Оптимизация сборки
+        "incremental": false,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+
+        // Добавляем дополнительные строгие проверки
+        "exactOptionalPropertyTypes": true,
+        "useUnknownInCatchVariables": true,
+
+        // Улучшаем обработку импортов
+        "allowArbitraryExtensions": true,
+        "verbatimModuleSyntax": false,
+
+        // Дополнительные проверки для улучшения типобезопасности
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false
+    },
+    "include": ["src/**/*", "types"],
+    "exclude": ["node_modules", "dist", "test", "**/*spec.ts", "**/*.test.ts"]
+}

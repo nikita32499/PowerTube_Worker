@@ -1,0 +1,22 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+      {
+          "label": "build",
+          "type": "shell",
+          "command": "gcc",
+          "args": [
+              "-g",
+              "${file}",
+              "-o",
+              "${fileDirname}/${fileBasenameNoExtension}",
+              "-I/usr/include/postgresql",  // путь к заголовочным файлам
+              "-lpq"                        // линковка с libpq
+          ],
+          "group": {
+              "kind": "build",
+              "isDefault": true
+          }
+      }
+  ]
+}

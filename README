@@ -1,0 +1,17 @@
+создание учётных данных через добавление в фаил ./squid/passwd
+
+
+зависемости:
+	apt install apache2-utils
+
+
+создание учётных данных и вывод в stdout
+	htpasswd -nb user1 password1
+
+удаление через запрос https 
+	curl -vvv -x "https://ИМЯ_УАЛЯЕМОГО_ПОЛЬЗОВАТЕЛЯ:/reload-password-file@smile-baby.ru:4040" ifconfig.me
+
+
+
+
+./auth_pg_helper --host 127.0.0.1 --port 5432 --dbname squid
