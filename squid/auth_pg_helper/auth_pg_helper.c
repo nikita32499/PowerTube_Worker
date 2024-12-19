@@ -145,7 +145,7 @@ int check_credentials(const char *username, const char *password) {
     paramValues[1] = password;
 
     res = PQexecParams(conn,
-        "SELECT COUNT(*) FROM auth WHERE username = $1 AND password = $2",
+        "SELECT COUNT(*) FROM auth WHERE username = $1 AND password = $2 AND avail = TRUE",
         2,       // количество параметров
         NULL,    // позволяет PostgreSQL определить типы
         paramValues,

@@ -1,17 +1,18 @@
-создание учётных данных через добавление в фаил ./squid/passwd
+apt install certbot
+certbot certonly --standalone -d worker-dev.smile-baby.ru
 
 
-зависемости:
-	apt install apache2-utils
 
-
-создание учётных данных и вывод в stdout
-	htpasswd -nb user1 password1
-
-удаление через запрос https 
-	curl -vvv -x "https://ИМЯ_УАЛЯЕМОГО_ПОЛЬЗОВАТЕЛЯ:/reload-password-file@smile-baby.ru:4040" ifconfig.me
+cat /etc/letsencrypt/live/worker-dev.smile-baby.ru/privkey.pem /etc/letsencrypt/live/worker-dev.smile-baby.ru/fullchain.pem > ./worker-dev.smile-baby.pem
 
 
 
 
-./auth_pg_helper --host 127.0.0.1 --port 5432 --dbname squid
+
+
+
+
+
+
+
+certbot certonly --standalone -d worker-dev.smile-baby.ru --cert-path ./worker-dev.smile-baby.ru.fullchain.pem --key-path ./worker-dev.smile-baby.ru.privkey.pem -n

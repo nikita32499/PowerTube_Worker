@@ -2,7 +2,7 @@ FROM node:20-slim as dev
 
 ARG APPDIR
 
-RUN apt-get update && apt-get install -y procps
+RUN apt-get update && apt-get install -y procps certbot
 
 ENV NODE_MODE=dev
 

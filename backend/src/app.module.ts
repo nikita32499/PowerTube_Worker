@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Config } from 'infrastructure/libs/config';
-import { AuthDB } from 'infrastructure/modules/auth/db/auth.db';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
+import { Config } from 'infrastructure/libs/config'
+import { AuthDB } from 'infrastructure/modules/auth/db/auth.db'
 
 @Module({
     imports: [
@@ -14,7 +14,7 @@ import { AuthDB } from 'infrastructure/modules/auth/db/auth.db';
             database: Config.POSTGRES_DATABASE,
             entities: [AuthDB],
             autoLoadEntities: true,
-            synchronize: false,
+            synchronize: true,
             migrationsRun: Config.NODE_MODE === 'dev',
         }),
     ],

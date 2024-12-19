@@ -1,0 +1,4 @@
+переделать squid.conf
+
+
+сделать рефакторинг auth_pg_helper.c
