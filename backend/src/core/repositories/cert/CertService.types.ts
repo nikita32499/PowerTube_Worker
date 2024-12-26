@@ -6,6 +6,6 @@ export type TCertService = {
 
 
 
-	createCert:(host:string)=>Promise<boolean>
+	initCert: (host: string) => Promise<boolean>
 
 }

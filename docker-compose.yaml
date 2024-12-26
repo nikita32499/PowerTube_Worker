@@ -34,6 +34,9 @@ services:
                 - dist
                 - .vscode
         network_mode: host
+        volumes:
+            - "./cert:/cert"
+            - "./squid.conf:/squid.conf"
 
 
 
@@ -47,6 +50,7 @@ services:
         
         volumes: 
           - "./cert:/etc/squid/ssl_cert/:ro"
+          - "./squid.conf:/etc/squid/squid.conf"
         network_mode: host
         attach: true
         depends_on:

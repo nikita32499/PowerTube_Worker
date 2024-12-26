@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Config } from 'infrastructure/libs/config'
-import { AuthDB } from 'infrastructure/modules/auth/db/auth.db'
+import { CertModule } from 'infrastructure/modules/cert/cert.module'
+import { ProxyDB } from 'infrastructure/modules/proxy/db/proxy.db'
 
 @Module({
     imports: [
@@ -12,12 +13,13 @@ import { AuthDB } from 'infrastructure/modules/auth/db/auth.db'
             username: Config.POSTGRES_USER,
             password: Config.POSTGRES_PASSWORD,
             database: Config.POSTGRES_DATABASE,
-            entities: [AuthDB],
+            entities: [ProxyDB],
             autoLoadEntities: true,
             synchronize: true,
             migrationsRun: Config.NODE_MODE === 'dev',
         }),
+        CertModule
     ],
     providers: [],
 })
-export class AppModule {}
+export class AppModule { }

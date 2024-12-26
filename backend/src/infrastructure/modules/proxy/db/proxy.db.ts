@@ -1,9 +1,11 @@
-import { TAuthCredentials } from 'core/repositories/auth/types/auth.entity';
-import { EntitySchemaTyped, TypeormLib } from 'infrastructure/libs/typeorm/typeorm.libs';
+import { TProxyCredentials } from 'core/repositories/proxy/types/proxy.entity'
+import { EntitySchemaTyped, TypeormLib } from 'infrastructure/libs/typeorm/typeorm.libs'
 
-export const AuthDB = new EntitySchemaTyped<TAuthCredentials>({
-    name: 'Auth',
-    tableName: 'auth',
+
+
+export const ProxyDB = new EntitySchemaTyped<TProxyCredentials>({
+    name: 'Proxy',
+    tableName: 'proxy',
     columns: {
         id: {
             type: 'varchar',
@@ -40,4 +42,4 @@ export const AuthDB = new EntitySchemaTyped<TAuthCredentials>({
             default: true,
         },
     },
-});
+})

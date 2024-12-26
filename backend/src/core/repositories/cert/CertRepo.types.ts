@@ -2,17 +2,17 @@
 
 
 
-export type TCertRepo ={
+export type TCertRepo = {
 
 
 	//проверка на наличие файла сертификата
-     certFileExist: () => Promise<boolean>;
+	certFileExist: () => Promise<boolean>
 
 	//создание файла сертификата
-	 createCertFile: (host:string) => Promise<void>;
+	createCertFile: (host: string) => Promise<boolean>
 
 	//удаление файла сертификата
-	 deleteCertFile: () => Promise<void>;
+	deleteCertFile: () => boolean
 
 }
 

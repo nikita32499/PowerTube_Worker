@@ -1,4 +1,4 @@
-import { TCertRepo } from 'core/repositories/cert/CertRepo'
+import { TCertRepo } from 'core/repositories/cert/CertRepo.types'
 import { TCertService } from 'core/repositories/cert/CertService.types'
 
 
@@ -7,13 +7,13 @@ import { TCertService } from 'core/repositories/cert/CertService.types'
 export class CertService implements TCertService {
 
 
-	constructor( certRepo: TCertRepo) {}
+	constructor(private readonly certRepo: TCertRepo) { }
 
 
-	async createCert(host:string){
+	async initCert(host: string) {
 		const certFileExist = await this.certRepo.certFileExist()
 
-		if(!certFileExist){
+		if (!certFileExist) {
 			await this.certRepo.createCertFile(host)
 		}
 
