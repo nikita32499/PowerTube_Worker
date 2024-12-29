@@ -1,18 +1,18 @@
-FROM node:20-slim as dev
+FROM node:22-slim as dev
 
 ARG APPDIR
 
 RUN apt-get update && apt-get install -y procps certbot
 
+RUN npm install -g typescript
+
 ENV NODE_MODE=dev
 
 WORKDIR /app
 
-COPY ${APPDIR}/package*.json .
+COPY ${APPDIR}/package.json .
 
-RUN npm install -g typescript
-
-RUN npm ci
+RUN npm i
 
 COPY ${APPDIR} .
 

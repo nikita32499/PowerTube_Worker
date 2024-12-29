@@ -1,5 +1,5 @@
-import { TCertRepo } from 'core/repositories/cert/CertRepo.types'
-import { CERT_FILE_PATH } from 'infrastructure/libs/constants'
+import { TCertFileRepo } from 'core/entities/cert/cert.repository'
+import { CERT_FILE_PATH } from 'infrastructure/config/constants'
 
 import { Injectable } from '@nestjs/common'
 import { exec } from 'child_process'
@@ -7,7 +7,7 @@ import fs from 'fs'
 
 
 @Injectable()
-export class CertRepoImpl implements TCertRepo {
+export class CertRepoImpl implements TCertFileRepo {
 
 
 	async certFileExist(): Promise<boolean> {

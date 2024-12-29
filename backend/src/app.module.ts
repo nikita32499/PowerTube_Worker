@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
 import { TypeOrmModule } from '@nestjs/typeorm'
-import { Config } from 'infrastructure/libs/config'
+import { Config } from 'infrastructure/config/config'
 import { CertModule } from 'infrastructure/modules/cert/cert.module'
 import { ProxyDB } from 'infrastructure/modules/proxy/db/proxy.db'
 

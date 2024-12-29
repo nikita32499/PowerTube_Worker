@@ -1,8 +1,17 @@
 
+export type TCertService = {
 
 
 
-export type TCertRepo = {
+
+	initCert: (host: string) => Promise<boolean>
+
+}
+
+
+
+
+export type TCertFileRepo = {
 
 
 	//проверка на наличие файла сертификата

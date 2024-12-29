@@ -37,7 +37,7 @@ services:
         volumes:
             - "./cert:/cert"
             - "./squid.conf:/squid.conf"
-
+            - "/shared/Powertube_shared:/shared/Powertube_shared:ro"
 
 
     worker-squid:
